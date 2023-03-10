@@ -1,0 +1,36 @@
+{
+    "nodes": [{
+      "name": "Normal Coin",
+      "values": ["heads", "tails"],
+      "variablePie": [
+      {
+        "label": "heads",
+        "id": 1,
+        "value": 0.5
+      }, {
+        "label": "tails",
+        "id": 2,
+        "value": 0.5
+      }],
+      "observedValuePie": null,
+      "conditionalTable" : null
+    }, {
+      "name": "Biased Coin",
+      "values": ["biased heads", "biased tails"],
+      "variablePie": [{
+        "label": "biased heads",
+        "id": 1,
+        "value": 0.7
+      }, {
+        "label": "biased tails",
+        "id": 2,
+        "value": 0.3
+      }],
+      "observedValuePie": null,
+      "conditionalTable" : null
+    }],
+    "links": [{
+      "source": 0,
+      "target": 1
+    }]
+}

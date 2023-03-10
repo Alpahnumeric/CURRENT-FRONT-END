@@ -1,0 +1,9 @@
+var colourArr = dataSet.map(function(currentDatum){
+      if(currentDatum.id === 0){ 
+        //id = 0 indicates whitespace, as values add up to less than 1. 
+        return '#ffffff';
+      }
+      else{
+        return defaultColorScale(currentDatum.id);
+      }
+    });

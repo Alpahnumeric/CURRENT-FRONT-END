@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force-Directed Graph</title>
+    <script src="http://d3js.org/d3.v5.min.js"></script>
+        <script>
+        var d3v5 = window.d3;
+        window.d3 = null;
+        </script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./force.css"/>
+    <link type="text/css" rel="stylesheet" href="./website.css"/>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#news">Content</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Examples</a>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </li>
+    </ul>
+
+    <div class="container1" id="chart1">
+    </div>
+    <div class="container2" id="chart2">
+      <h1 id = "pieChartName"></h1>
+
+      <p> To add a variable option, enter it's name and value: </p>
+      <form>
+          <p> 
+              <label for="sectorName">Name:</label>
+              <input type = "text" id = "sectorName" placeholder = "Heads" required>  
+          </p>
+          <p>
+              <label for = "sectorValue">Decimal: </label>
+              <input type = "number" id = "sectorValue" min = "0" max = "0.99" placeholder = "0.5" step = ".01">
+              <label for = "sectorValueNumerator">or Fraction:</label>
+              <input type = "number" id = "sectorValueNumerator" min = "1" max = "100" placeholder = "1" step = "1">
+              <label for="sectorValueDenominator">/</label>
+              <input type = "number" id = "sectorValueDenominator" min = "2" max = "100" placeholder = "3" step = "1">    
+          </p>
+          <button id = "pieSectorAdd">Add</button>
+      </form>
+      <p id = "errorMessage"></p>
+
+    </div>
+
+    <script src="pie.js" charset="utf-8"></script>
+    <script src="force.js" charset="utf-8"></script>
+
+</body>
+</html>

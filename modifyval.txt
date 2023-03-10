@@ -1,0 +1,31 @@
+function modifyValue(){
+  console.log("modify value")
+  if(selected_sector !== null){
+    var cancel = false;
+    var promptText = "Enter the probability (fraction or decimal) that the " + pieName + " variable's outcome is " + selected_sector.data.label + ":"
+    while (cancel !== true){
+      console.log("prompt now")
+      var newValue = prompt(promptText);  
+      if(newValue !== null){
+          if(+newValue >= 1 && +newValue <= 1000000000) { 
+            objIndex = dataset.findIndex((obj => obj.id === selected_sector.data.id));
+            dataset[objIndex].value = newValue;
+            resetPie();
+            generatePie();
+            transitionPie();
+            //...............
+            //pieText
+          // .data(variablePie(dataset), function(d){return d.data.id})
+          // .enter();
+            //transitionPie();
+          return;
+          } else{
+            promptText = "Enter a positive, whole number for the number of times the variable's outcome occurs:"
+          }
+      }
+      else{
+        cancel = true;
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force-Directed Graph</title>
+    <script src="http://d3js.org/d3.v5.min.js"></script>
+        <script>
+        var d3v5 = window.d3;
+        window.d3 = null;
+    </script>
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.3.0/math.min.js></script> 
+    <script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+    <script src= https://github.com/infusion/Fraction.js></script>
+    <link type="text/css" rel="stylesheet" href="./website.css"/>
+    <link type="text/css" rel="stylesheet" href="./force.css"/>
+    <link type="text/css" rel="stylesheet" href="./pie.css"/>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a href = "#home">Home</a></li>
+        <li><a href = "#news">Content</a></li>
+        <li class = "dropdown">
+          <a class = "aInTopPannel" href = "javascript:void(0)" class = "dropbtn">Examples</a>
+          <div id = "exampleGraph" class = "dropdown-content">
+            <button id = "teaHouse">Tea House</button>
+            <button id = "breastCancer">Breast Cancer</button>
+            <button id = "montyHall">Monty Hall Problem</button>
+            <button id = "universityApplication">University Application</button>
+            <button id = "cancerCauses">Cancer Causes</button>
+          </div>
+        </li>
+    </ul>
+
+    <div>
+        <div class="container1" id="chart1">
+                <p id = "graphErrorAlert" class = "pFormatting" style = "color:red;"></p>
+        </div>
+        <div class="container2">
+            <header>
+                <h1 id = "pieChartName">Text</h1>
+                <span class = "pieChartDependency" id = "pieChartDependency"></span>
+            </header>
+            
+            <div>
+                <a id = "sectorSelectionContainer">
+                    <label id = "pieInstruction1"> Click on a pie chart to view it.</label>
+                </a>
+                <p id = "pieInstruction2" class = "pFormatting"></p> 
+                <a>
+                    <label for="sectorName">Name:&nbsp;</label>
+                    <input type = "text" id = "sectorName" required>
+                </a>  
+                </p>
+                <a>
+                    <label for = "sectorDecimal">Decimal:&nbsp;</label>
+                    <input type = "number" id = "sectorDecimal" min = "0.01" max = "0.99" step = ".01">
+                    <label for = "sectorNumerator">or Fraction:&nbsp;</label>
+                    <input type = "number" id = "sectorNumerator" min = "1" max = "100"  step = "1">
+                    <!--- &nbsp is added whitespace -->
+                    <label for = "numeratorDenominatorDivide">/&nbsp;</label>
+                    <input type = "number" id = "sectorDenominator" min = "2" max = "100"  step = "1">  
+                    <!--- placeholder = "1" -->
+                </a>
+                <button id = "pieSectorAddOrModify">Add</button>
+                <p id = "pieErrorAlert" class = "pFormatting" style = "color:red;"></p>
+                <br>
+            </div>
+            
+            <div class="chart2" id="chart2"></div>
+    
+            <a>
+                <label id = "pieSumToOneText" for = "pieSumToOneIndicator"></label>
+                <label class = "tickOrCross" id = "pieSumToOneIndicator"></label>
+            </a>
+            <button class="updateTableButton" id = "updateTable">Update Table</button> 
+            <p class = "arrow pFormatting" id = "updateTableButtonArrow">&nbsp;</p>
+
+        </div>
+        
+    </div>
+
+    <div class="tableContainer">
+        <table id = "conditionalProbabilityTable"></table>
+    </div>
+    
+    <script src="pie.js" charset="utf-8"></script>
+    <script src="force.js" charset="utf-8"></script>
+    
+</body>
+</html>

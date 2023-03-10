@@ -1,0 +1,28 @@
+.on("mouseover", function(d) {
+      var hoverArc = d3.svg.arc()
+      .outerRadius(1.5 * radius)
+      .innerRadius(0);
+      d3.select(this).selectAll("path").transition()
+      .duration(250)
+      .attr("d", hoverArc);
+  
+      div.transition()
+        .duration(200)
+        .style("opacity", .9);
+      div.html(d.name)
+        .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY - 28) + "px");
+  })
+  .on("mouseout", function(d) {
+      var hoverOutarc = d3.svg.arc()
+      .outerRadius(radius)
+      .innerRadius(0);
+  
+      d3.select(this).selectAll("path").transition()
+      .duration(250)
+      .attr("d", hoverOutarc);
+  
+      div.transition()
+      .duration(500)
+      .style("opacity", 0);
+  })

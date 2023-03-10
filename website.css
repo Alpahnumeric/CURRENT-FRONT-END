@@ -1,0 +1,179 @@
+body {
+    background-color:white;
+}
+
+button {
+  font-family: Arial;
+}
+
+input {
+  font-family: Arial;
+}
+
+label {
+  cursor: default;
+  font-family: Arial;
+}
+
+.tabletext{
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+  font-family: Arial;
+  font-size: 1em;
+}
+
+.square{
+  font-size: 1.5em;
+}
+
+
+
+.pFormatting{
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-family: Arial;
+}
+
+table{
+  margin: auto;
+  padding: 0;
+  width: calc(100% - 100px)  
+  /*50 pixels on each side, to line up with containers */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #38444d;
+}
+
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: Arial;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: darkblue;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  background:none;
+  border:none; 
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dropdown-content button:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.container1{
+  display: block;
+  float: left;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.container2{
+  display: block;
+  float: right;
+  margin-top: 10px;
+  margin-right: 150px;
+}
+
+.chart2{
+  display: block;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+}
+
+.tableContainer{
+  display: block;
+}
+
+.updateTableButton{
+  margin-top: 15px;
+  width: 100%
+}
+
+.tickOrCross{
+  font-family: Arial;
+  font-size: 1.25em;
+}
+
+header {
+  border-bottom: 1px solid #000; 
+  margin-bottom: 25px;
+}
+
+header > h1 { 
+  display: inline-block; 
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  font-family: Arial;
+}
+
+header .pieChartDependency{ 
+  margin-top: 0.47em;
+  margin-bottom: 0.47em;
+  margin-right: 0px;
+  margin-left: 10px;
+  font-family: Arial;
+  font-size: 15pt;
+}
+
+.arrow{
+  text-align: center;
+  font-family: Arial;
+  font-size: 1.5625em;
+  display: block;
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+label { display: table-cell; }
+input { display: table-cell; }
+button { display: table-row; }
+form { display: table-row; }

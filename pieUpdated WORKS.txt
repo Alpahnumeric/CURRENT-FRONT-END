@@ -1,0 +1,16 @@
+function pieUpdated(){ //Triggered from user pressing the "Update Graph" button  
+  for (var index = 0; index < nodes.length; ++index) {
+    var n = nodes[index];
+    if(n.name == pieNode.name){
+      n.variablePie = pieDataset.slice();
+      n.observedValuePie = observedValuePie;  
+      nodes[index] = n;
+      break;
+    }
+  }
+  resettingPie = true;
+  graphForce.stop();
+  updateGraph();
+  graphForce.start();
+  updateGraph();
+}

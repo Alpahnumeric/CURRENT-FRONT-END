@@ -1,0 +1,48 @@
+function generateColorScale(){
+  if (selectedSector === null){
+    colourArr = pieDataset.map(function(currentDatum){
+      if(currentDatum.id === 0){
+        return '#ffffff';
+      }
+      else{
+        return defaultColorScale(currentDatum.data.id);
+      }
+    });
+  }
+  else{
+    colourArr = pieDataset.map(function(currentDatum){
+      if(currentDatum.id === 0){
+        return '#ffffff';
+      }
+      else if (selectedSector.data.id === currentDatum.id){
+        return defaultColorScale(selectedSector.data.id);
+      }
+      else{
+        return "#a3a9a8"
+      }
+    });
+  }
+  colorScale = d3.scale.ordinal().range(colourArr);
+  return colorScale;
+} 
+
+
+function generateColorScale(){
+  if (selectedSector === null){
+    colourArr = pieDataset.map(function(currentDatum){
+      return defaultColorScale(currentDatum.id);
+    });
+  }
+  else{
+    colourArr = pieDataset.map(function(currentDatum){
+      if (selectedSector.data.id === currentDatum.id){
+        return defaultColorScale(selectedSector.data.id);
+      }
+      else{
+        return "#a3a9a8"
+      }
+    })
+  }
+  colorScale = d3.scale.ordinal().range(colourArr);
+  return colorScale;
+} 

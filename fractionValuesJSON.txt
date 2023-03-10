@@ -1,0 +1,49 @@
+function fractionValuesJSON(){
+  function fractionConvert(){
+    if(typeof sectorValue === 'string' || sectorValue instanceof String){
+      return math.fraction(sectorValue);
+    }else{
+      return sectorValue; 
+    }
+  }
+
+  for (var nodeIndex = 0; nodeIndex < nodes.length; ++nodeIndex) {
+    var node = nodes[nodeIndex];
+    var variablePie = node.variablePie;
+    if(variablePie !== null){
+      for (var s = 0; s < variablePie.length; ++s) { 
+        var sector = variablePie[s];
+        var sectorValue = sector.value;
+        if(typeof sectorValue === 'string' || sectorValue instanceof String){
+          sector.value = fractionConvert(sectorValue);
+        }
+      }
+    }
+    else{
+      var conditionalTable = node.conditionalTable;
+      if(conditionalTable[0].constructor === Array){
+        if(conditionalTable[0][0].constructor === Array){
+        //3D array (for 3 conditionals)
+          conditionalTable.map(function(table) {
+            return table.map(function (v) { 
+                return row.map(
+                  function (v) {fractionConvert(v)}
+                );
+              }
+            );
+          })
+        }else{
+        //2D array (for 2 conditionals)
+          conditionalTable.map(function(row) {
+            return row.map(function (v) {fractionConvert(v)}
+            );
+          })
+        } 
+      }
+      else{
+      //1D array (for 1 conditional)
+         conditionalTable = conditionalTable.map(function (v) {fractionConvert(v)});   
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+function conditionalNode(){
+  conditionalTable = []
+  var cancel = false;
+  var promptText = "Enter the number of values this variable can take:"
+  while (cancel !== true){
+    var valueNumber = prompt(promptText);  
+    if(valueNumber !== null){
+      if(valueNumber > 0 && valueNumber < 4  && Math.floor(valueNumber) === +valueNumber){ //i.e. Natural number 1, 2 or 3
+    
+        for (var index = 0; index < nodes.length; ++index) {
+          var n = nodes[index];
+          if(n.name == selectedNode.name){
+            var conditonalsNumber = n.numberOfValues
+            break;
+          }
+        }
+        for(var i = 0; index <= conditonalsNumber; ++i){
+          conditionalTable.append([])
+        }
+        return conditionalTable
+      }
+      else{
+        promptText ="Please enter a natural number between 1 and 3: "
+      }
+    }
+    else{
+      cancel = true;
+    }
+  }
+  return conditionalTable; //Don't add node. 
+}

@@ -1,0 +1,123 @@
+- Extend everything to 3 conditionals - only works for 2 atm.
+
+- COULD GET RID OF UPDATE TABLE BUTTON TOO - enquire with Alan?  
+
+- Have a text input for original values
+    - Hit enter if you'd like uniform pie
+ ^ WILL SPEED UP ENTRANCE OF VALUES INTO THE SYSTEM
+
+- Clear probability table when sectors of conditonal are added or deleted.
+
+- Center text in table doesn't seem to work?
+
+- When added dependent link, conditional table shouldn't be white.
+    Have indicator perhaps that table is newly enlarged? 
+
+- Indicate node selection a bit better, such as with a halo. 
+- Have a way to indicate what is being deleted before you do, so a halo on the nodes and corresponding circles. 
+
+- Include controls (shift, delete etc) somewhere on the screen.
+- Have a look at text attributes more
+    - Good websites:
+        https://richardbrath.wordpress.com/2018/11/24/using-font-attributes-with-d3-js/
+        https://www.integral-domain.org/lwilliams/tech/svg_d3/textGen.html
+- 3D table. 
+- Eliminate use of numberOfValues by filling conditionalTable with 0s. 
+- "Cannot remove a value from a node in a Bayesian graph!" add info on why. 
+- Sort out NODE DELETION with conditionals taken into account. 
+- If pie value is 0, don't draw its label.
+    Such as with Monty Hall Problem
+
+Current Considerations:
+- JS vanilla prompt box doesn't support CSS
+    To make error messages displayed in red.
+    Could use a custom prompt box:
+        https://www.cssscript.com/alert-confirm-prompt-popup-attention/
+    May compromise browser compatability. 
+
+- Colour table text to be the same as sector colour?
+        May cause accessability problems in terms of reading. 
+- MACs don't have delete keys! Sort out. 
+    Deleting is done via shift + backspace, as backspace is used for text.
+- Center LHS pie.
+-  Move the conditional table under the pie header label. 
+        But currently BOTTOM may work best due to its size. 
+- Arrow between pie and graph, rather than a button as is done at the minute. 
+        NOT SURE how to HTML this layout atm. 
+- Include way to highlight currently selected node on graph? Opacity of colour perhaps?
+- Added node comes in with force on it. Can you fix this initally?
+- Get rid of moving of pie when a sector is selected.
+- Centre LHS pie in the svg. 
+- Connect pieContainerText-style to CSS. 
+- If > 1, add overlap between segments - blend colour. 
+      Doesn't seem possible in D3.JS directly, and blending colour may confuse user. 
+- Consider allowing updates to names of nodes with O-> links but not <-O links. 
+- Display stats values when pie is hovered over.  
+- Uploading JSON files?
+- Add manual positioning for JSON example graphs. 
+        Include force as off. 
+
+UPDATE BUTTON CHANGE
+Got rid of 'update graph' button
+        User has to make 2 changes to make node valid again, so hard to do by mistake. 
+            As removing/adding/modifying a sector will take the sum out of 1.
+            It would have started at 1 due to it being a valid pie. 
+There was issues with its placement (including confusion with 'update table' vs 'update graph')
+    Mention arrow idea. 
+
+Done:
+- A node's conditonal table is affected when either:
+        A node it's conditoned on changes (sectors added/deleted/modified)
+        A node it's conditoned on is deleted.
+        A link where it's the target is added/removed. 
+    All of these are now considered - see updateConditionalTable for most of it.
+
+- ADDING/DELETING nodes to pie. 
+    THINK I've dealt with all the edge cases, but would be good to check!
+- Have conditionals a color that isn't blue, as it looks the same as an observed.
+    - Gone with green (id 10 on color scale) as that won't likely be used (would require 10 sectors on a pie)
+- Modified from having an "Update Graph" button to updates on graph happening #
+  at the same time as pie updates, provided sum to 1. 
+- Update drop down sector list for add/delete. 
+- Do GREEN  TABLE ENTRY based on whether that value has a table or not. 
+- Deleting link so a node is no longer conditional currently doesn't update until clicked.
+- Include a way to click on sectors that are super small, such as a list of the
+  value names that can be clicked on. 
+    Done via a drop-down menu
+- If a pie node only has 1 value, shouldn't need to select/deselect that one value (i.e. selectedSector by default)
+- Add vertification to check pie chart values sum to 1 (for probabilties)
+- Make LHS svg larger
+- Ensure sector can't be deleted if only one sector. 
+- Sort out colours in LHS pie.
+- Sorting out text/pie size on LHS.
+- Deleting of nodes/links. 
+- Add vertification to ensure sector names within each pie are unique.
+- Move edge arrow to better align with pie size. 
+- When no nodes are left, black name banner still shows the last deleted node. Fix somehow?
+- Uncaught exception when "update graph" pressed when node isn't there atm.
+    - Fix by default pie when all have been deleted. 
+- Sort out default pie when all nodes are removed from graph.
+- Allow update of current pie sector on LHS. 
+    (NOT name attr, as user should instead delete that variable outcome and make another)
+- Text consitency between LHS and RHS
+- LHS compatible with fractions. 
+- Fix gap between LHS and RHS of / in fraction on LHS.
+- 'Sector name cannot be modified' for conditonal - put name back in box when error message is there. 
+- If less than 1, add a white segment to show how it’s not complete. 
+- Pie chart updated after conditionals modified due to node/link delete.
+    Not necessary upon add as selectedNode changes to link origin. 
+- When pie is deleted, default pie is displayed. 
+- Re-formatted generateNode into functions to avoid a signficant amount of nested IF checks. 
+        Originally both the input of the var's name and its value were in one function. 
+- When both a fraction and decimal value are entered, the decimal is taken.
+    Thus remove the fraction text upon submission, to make it clear it's now 
+    a decimal value. 
+- Have signal that pie chart's values are > 1.
+- Adding link in a way such that node in graph updates to show it's dependent.
+
+DISCUSS DEFAULT PIE IN DISS 
+    Initally had as "Outcome" full pie, in defualt first colour. 
+    Now it's more of an outline - use law from Interaction Design about shapes. 
+
+Thought delay in update is due to the complex logic meaning it can't happen on that "tick". 
+Was not - needed to call updateGraph at the end to lock in all changes. 

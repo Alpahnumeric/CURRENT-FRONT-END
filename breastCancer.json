@@ -1,0 +1,30 @@
+{
+    "nodes": [{
+        "name": "Cancer",
+        "values": ["True", "False"],
+        "variablePie": [
+        {
+            "label": "True",
+            "id": 1,
+            "value": 0.14
+        }, {
+            "label": "False",
+            "id": 2,
+            "value": 0.86
+        }],
+        "observedValuePie": null,
+        "conditionalTable" : null
+        }, {
+        "name": "Screening Result",
+        "values": ["True", "False"],
+        "variablePie": null,
+        "observedValuePie": null,
+        "conditionalTable" : [
+            [0.73, 0.27],
+            [0.12, 0.88]]
+        }],
+    "links": [{
+        "source": 0,
+        "target": 1
+    }]
+}

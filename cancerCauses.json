@@ -1,0 +1,72 @@
+{
+  "nodes": [{
+      "name": "Pollution",
+      "values": ["Low", "High"],
+      "variablePie": [
+      {
+        "label": "Low",
+        "id": 1,
+        "value": 0.9
+      }, {
+        "label": "High",
+        "id": 2,
+        "value": 0.1
+      }],
+      "observedValuePie": null,
+      "conditionalTable" : null
+    }, {
+      "name": "Smoker",
+      "values": ["True", "False"],
+      "variablePie": [{
+        "label": "True",
+        "id": 1,
+        "value": 0.3
+      }, {
+        "label": "False",
+        "id": 2,
+        "value": 0.7
+      }],
+      "observedValuePie": null,
+      "conditionalTable" : null
+    }, {
+        "name": "Cancer",
+        "values": ["True", "False"],
+        "variablePie": null,
+        "observedValuePie": null,
+        "conditionalTable" : [
+          [[0.030, 0.97], [0.001, 0.999]],
+          [[0.050, 0.95], [0.020, 0.98]]
+        ]
+    },{
+        "name": "X-ray",
+        "values": ["Positive", "Negative"],
+        "variablePie": null,
+        "observedValuePie": null,
+        "conditionalTable" : [
+          [0.9, 0.1], 
+          [0.2, 0.8]
+        ]
+    }, {
+        "name": "Dyspnoea",
+        "values": ["True", "False"],
+        "variablePie": null,
+        "observedValuePie": null,
+        "conditionalTable" : [
+          [0.65, 0.35],
+          [0.3, 0.7]
+        ]
+    }],
+  "links": [{
+      "source": 0,
+      "target": 2
+    }, {
+        "source": 1,
+        "target": 2
+    }, {
+        "source": 2,
+        "target": 3
+    }, {
+        "source": 2,
+        "target": 4
+    }]
+}
