@@ -1,3 +1,4 @@
+document.getElementById('sectorDecimal').value = 0.5;
 var width = 900,
 height = 600,
 radius = 60,
