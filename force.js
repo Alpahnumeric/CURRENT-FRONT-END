@@ -1,4 +1,4 @@
-document.getElementById('sectorDecimal').value = 0.5;
+var varName = prompt("HI");
 var width = 900,
 height = 600,
 radius = 60,
