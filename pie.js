@@ -1,3 +1,5 @@
+document.getElementById('sectorDecimal').value = 0.5;
+
 var width = 300,
 height = 300,
 radius = Math.min(width, height) / 2,
