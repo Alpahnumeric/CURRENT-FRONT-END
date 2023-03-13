@@ -1,4 +1,3 @@
-var varName = prompt("HI");
 var width = 900,
 height = 600,
 radius = 60,
