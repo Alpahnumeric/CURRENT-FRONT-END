@@ -1,0 +1,23 @@
+{
+  "name": "bayes-diss",
+  "version": "1.0.0",
+  "description": "Dissertation project",
+  "main": "force.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alpahnumeric/CURRENT-FRONT-END.git"
+  },
+  "author": "Gemma Penson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Alpahnumeric/CURRENT-FRONT-END/issues"
+  },
+  "homepage": "https://github.com/Alpahnumeric/CURRENT-FRONT-END#readme",
+  "dependencies": {
+    "d3-svg-to-png": "^0.3.1",
+    "save-svg-as-png": "^1.4.17"
+  }
+}

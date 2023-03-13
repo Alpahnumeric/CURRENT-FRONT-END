@@ -203,13 +203,12 @@ function dropDownSectorSelected(){
   var selected = true;
   if(optionSelected === "None"){
     selectedSector = null;
+    d3.select("#pieInstruction1").text("To view/edit a sector, click on it or use the drop-down:"  + "\u00A0");
     if(conditionalTable === null){ 
       d3.select("#pieSectorAddOrModify").text("Add");
-      d3.select("#pieInstruction1").text("To view/edit a sector, click on it or use the drop-down:");
       d3.select("#pieInstruction2").text("To add a variable option, enter it's name and value: ");
     }
     else{
-        d3.select("#pieInstruction1").text("To view/edit a sector, click on it or use the drop-down:" + "\u00A0");
         d3.select("#pieInstruction2").text("When done, press 'Update Table' to confirm any modifications.");
     }
     clearInputs();
@@ -238,7 +237,7 @@ function dropDownSectorSelected(){
 
 function sectorSelected(){
   d3.select("#pieSectorAddOrModify").text("Modify");
-  d3.select("#pieInstruction1").text("Press enter to select this as the observed value." + "\u00A0");
+  d3.select("#pieInstruction1").text("Press enter to select this as the observed value: " + "\u00A0");
   //\u00A0 is the unicode literal for a non breaking space. 
   if(conditionalTable === null){ 
     d3.select("#pieInstruction2").text("Modify this sector by changing its name or value: ");
@@ -537,7 +536,9 @@ function displaySectorOptions(){
     sectorOptions.remove();
   }
   var div = document.getElementById("sectorSelectionContainer");
+  div.classList.add("inline");
   sectorOptions = document.createElement("select");
+  sectorOptions.classList.add("inline");
   div.appendChild(sectorOptions);
   var opt = document.createElement('option');
   opt.value = "None";
@@ -554,7 +555,13 @@ function displaySectorOptions(){
   sectorOptions.addEventListener('change', dropDownSectorSelected);
 }
 
-function displayPie(d){
+function displayPie(){
+  document.getElementById("pieContainer").style.display = "block";
+  document.getElementById("instructionsContainer").style.display = "none";
+}
+
+function displayUnconditionalPie(d){
+  displayPie();
   document.getElementById("updateTable").style.display = "none";
   table.innerHTML = "";
   table.setAttribute("border", "0");
@@ -569,7 +576,8 @@ function displayPie(d){
   document.getElementById("pieChartName").textContent = variableName;
   document.getElementById("pieChartDependency").textContent = "";
   d3.select("#pieSectorAddOrModify").text("Add");
-  d3.select("#pieInstruction1").text("To view a sector, click on it or use the drop-down:" + "\u00A0");
+  d3.select("#pieInstruction1").text("To view/edit a sector, click on it or use the drop-down:" + "\u00A0");
+  d3.select("#pieInstruction2").text("To add a variable option, enter it's name and value: ");
   d3.select("#pieSumToOneText").text("Probabilities sum to 1:" + "\u00A0");
   //\u00A0 is the unicode literal for a non breaking space. 
   d3.select("#updateTableButtonArrow").text("");
@@ -582,6 +590,7 @@ function displayPie(d){
 }
 
 function displayConditionalPie(d, conditionedOnPies, conditionedLabels){
+  displayPie();
   document.getElementById("updateTable").style.display = "none";
   table.innerHTML = "";
   table.setAttribute("border", "0");

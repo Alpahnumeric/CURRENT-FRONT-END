@@ -8,9 +8,11 @@ button {
 
 input {
   font-family: Arial;
+  display: inline-block;
 }
 
 label {
+  display: inline-block;
   cursor: default;
   font-family: Arial;
 }
@@ -39,7 +41,7 @@ label {
   font-family: Arial;
 }
 
-table{
+table {
   margin: auto;
   padding: 0;
   width: calc(100% - 100px)  
@@ -59,7 +61,7 @@ li {
   float: left;
 }
 
-li a, .dropbtn {
+li a, .dropbtn .topBar {
   display: inline-block;
   color: white;
   text-align: center;
@@ -68,7 +70,7 @@ li a, .dropbtn {
   font-family: Arial;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+li a:hover, .dropdown:hover .dropbtn .topBar {
   background-color: darkblue;
 }
 
@@ -104,37 +106,41 @@ li.dropdown {
   display: block;
 }
 
-.container1{
+.container1 {
   display: block;
   float: left;
   margin-left: 50px;
   margin-top: 10px;
 }
 
-.container2{
+.container2 {
   display: block;
   float: right;
   margin-top: 10px;
   margin-right: 150px;
 }
 
-.chart2{
+.chart2 {
   display: block;
   padding: 5px;
   margin-bottom: 10px;
   margin: 0 auto;
 }
 
-.tableContainer{
+.tableContainer {
   display: block;
 }
 
-.updateTableButton{
+.updateTableButton {
   margin-top: 15px;
   width: 100%
 }
 
-.tickOrCross{
+.select {
+  display: inline-block;
+}
+
+.tickOrCross {
   font-family: Arial;
   font-size: 1.25em;
 }
@@ -164,6 +170,28 @@ header .pieChartDependency{
   font-size: 15pt;
 }
 
+
+h2 {
+  font-family: Arial;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Arial;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Arial;
+}
+
+b {
+  display: inline-block;
+  font-family: Arial;
+}
+
 .arrow{
   text-align: center;
   font-family: Arial;
@@ -173,7 +201,26 @@ header .pieChartDependency{
   margin-bottom: 0em;
 }
 
-label { display: table-cell; }
-input { display: table-cell; }
-button { display: table-row; }
-form { display: table-row; }
+label { 
+  display: inline-block;
+}
+
+input {
+  display: inline-block;
+}
+
+button { 
+  display: table-row;
+}
+
+form { 
+  display: table-row;
+}
+
+#instructionsContainer {
+  display: none;
+}
+
+#pieContainer {
+  display: block;
+}

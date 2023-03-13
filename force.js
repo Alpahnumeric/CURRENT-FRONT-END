@@ -2,6 +2,7 @@ var width = 900,
 height = 600,
 radius = 60,
 shift = false,
+isZoomingKey = false,
 nodes = [],
 links = [],
 selectedNode,
@@ -67,12 +68,21 @@ var graphForce = d3.layout.force() //Explore best params
   .linkDistance(4 * radius)
   .size([width, height]);
 
-  var svg = d3.select("#chart1")
+var isZooming = true;
+
+var svg = d3.select("#chart1")
   .append("svg")
   .attr("width", width)
   .attr("height", height)
-  .attr("class", "svg-style");
-  
+  .attr("class", "svg-style")
+  .call(d3.behavior.zoom().on("zoom", function () {
+    console.log("zoom");
+    if(isZooming && isZoomingKey){
+      svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+    }
+  }))
+  .append("g");
+
 d3.select(window)
   .on("keydown", keydown)
   .on("keyup", keyup)
@@ -176,6 +186,11 @@ function fractionValuesJSON(){
   }
 }
 
+function displayInstructions(){
+  document.getElementById("pieContainer").style.display = "none";
+  document.getElementById("instructionsContainer").style.display = "block";
+}
+
 var exampleGraphSelection = document.getElementById("exampleGraph");
 exampleGraphSelection.addEventListener("click", exampleGraphSelected);
 function exampleGraphSelected(event){
@@ -230,7 +245,6 @@ function nodeMouseOver(d){
   }
 }
 
-
 function nodeMouseOut(d){
   if (drawingLine) {
     selectedTargetNode = null;
@@ -242,6 +256,7 @@ function nodeMouseOut(d){
 }
 
 function nodeMouseDown(d){
+  isZooming = false;
   deletingAffectsGraph = true;
   if(pieNameLabel !== null){
     pieNameLabel.remove();
@@ -258,18 +273,22 @@ function nodeMouseDown(d){
   d.fixed = true;
   graphForce.stop();
   updateGraph();
+  setTimeout(function () {isZooming = true;}, 3000);
 }
 
 function lineMouseDown(d){
+  isZooming = false;
   selectedLink = d;
   selectedNode = null;
   deletingAffectsGraph = true;
   updateGraph();
+  setTimeout(function () {isZooming = true;}, 3000);
 }
 
 function updateGraph(){
   function dragstart(d) {
     if(shift){
+      console.log("dragging");
       if(pieNameLabel !== null){
         pieNameLabel.remove();
         pieNameLabel = null;
@@ -472,7 +491,7 @@ function updateGraph(){
 function displayVariableOnPie(d){
   pieNode = d;
   if(d.conditionalTable === null){
-    displayPie(d);
+    displayUnconditionalPie(d);
   }
   else{
     var conditionedOnLabels = [];
@@ -503,6 +522,10 @@ function displayVariableOnPie(d){
 
 function keyup() {
   switch (d3.event.keyCode) {
+    case 90: { //z
+      isZoomingKey = false;
+      break;
+    }
     case 16: { // shift
       shift = false;
       updateGraph();
@@ -613,7 +636,7 @@ function generateNode(mouse, isConditional){
 
   function getProbabilitiesInputArray(valuesInputArray, varName){
     console.log("in function");
-    var promptText = "Enter the probabilties that your values '" +  valuesInputArray.toString() + "' can take, each seperated by a comma. For example, '0.2,0.3,0.5'. \n        OR        \n Hit enter for uniform probabilities."
+    var promptText = "Enter the probabilties that your values '" +  valuesInputArray.toString() + "' can take, each seperated by a comma. For example, '0.2,0.3,0.5'. \n        OR        \n Press 'OK' for uniform probabilities."
     while (cancel !== true){
       console.log("prompt now");
       var probInput = prompt(promptText);
@@ -700,11 +723,11 @@ function addConditionality(sourceNode, targetNode){
 }
 
 function mousedown() { 
-  var mouse = d3.mouse(svg.node());
-  generateNode(mouse, false);
-  graphForce.stop();
-  updateGraph();
-  graphForce.start();
+    var mouse = d3.mouse(svg.node());
+    generateNode(mouse, false);
+    graphForce.stop();
+    updateGraph();
+    graphForce.start();
 }
 
 function mousemove(){
@@ -756,7 +779,7 @@ function mouseup(){ //Add link
         }  
         if(pieNode === selectedTargetNode){
           finishLinkAdd();
-          displayPie(selectedTargetNode);
+          displayUnconditionalPie(selectedTargetNode);
           return;
         }
       }  
@@ -921,8 +944,18 @@ function deleteLink(link){
 
 function keydown() { //https://www.toptal.com/developers/keycode
   switch (d3.event.keyCode) {
+    //Can only have either shift or isZooming as they'd be a drag-panning conflict. 
+    case 90: { //Z key
+      if(!shift){
+        isZoomingKey = true;
+      }
+      break;
+    }
     case 16: { // shift
-      shift = true;
+      if(!isZoomingKey){
+        shift = true;
+        console.log("shift is true now");
+      }
       break;
     }
     case 8: { // delete

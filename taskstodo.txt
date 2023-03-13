@@ -1,10 +1,8 @@
 - Extend everything to 3 conditionals - only works for 2 atm.
 
-- COULD GET RID OF UPDATE TABLE BUTTON TOO - enquire with Alan?  
+- Change links into buttons to allow instructions to be displayed. 
 
-- Have a text input for original values
-    - Hit enter if you'd like uniform pie
- ^ WILL SPEED UP ENTRANCE OF VALUES INTO THE SYSTEM
+- COULD GET RID OF UPDATE TABLE BUTTON TOO - enquire with Alan?  
 
 - Clear probability table when sectors of conditonal are added or deleted.
 
@@ -71,6 +69,11 @@ Done:
         A node it's conditoned on is deleted.
         A link where it's the target is added/removed. 
     All of these are now considered - see updateConditionalTable for most of it.
+
+Initally upon input a pie was auomatically made with uniform probabilities. 
+    - Implemented a text input for probability values for non-conditional pies. 
+    - Hit enterif you'd like a uniform pie. 
+    - Should speed up entrance of values into the system. 
 
 - ADDING/DELETING nodes to pie. 
     THINK I've dealt with all the edge cases, but would be good to check!
