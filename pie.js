@@ -27,7 +27,7 @@ variableValues = null;
 
 document.getElementById("updateTable").style.display = "none";
 
-d3v5.select(window)
+d3.select(window)
   .on("keydown", keydown)
   .on("keyup", keyup)
 
