@@ -1,4 +1,4 @@
-var width = 900,
+var width = 700,
 height = 600,
 radius = 60,
 shift = false,
